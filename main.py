@@ -38,24 +38,24 @@ def cargar_y_vincular_datos(ruta_archivo, limite_filas=None):
 La primera iteracion calcula el total de una sola factura multiplicando cantidad por precio unitario. La segunda busca en todo el diccionario facturas_db las listas que le pertenecen a un clinete especifico (customer_id) y suma sus facturas para ver cuanto ha gastado en total.
 '''
 
-def calcular_total_factura_enlazada(lista_factura):
+def calcular_total_factura_enlazada(lista_factura):#Calcular el importe total de una factura 
     total = 0.0
     for linea in lista_factura.recorrer():
         total += linea['Quantity'] * linea['UnitPrice']
-    return total
+    return total#Aqui termina el punto calcular factura
 
-def calcular_acumulado_cliente_enlazada(facturas_db, customer_id):
+def calcular_acumulado_cliente_enlazada(facturas_db, customer_id):#Calcular el total acumulado de un cliente
     total_acumulado = 0.0
     for invoice_no, lista_factura in facturas_db.items():
         if lista_factura.cabeza and lista_factura.cabeza.datos['CustomerID'] == customer_id:
             total_acumulado += calcular_total_factura_enlazada(lista_factura)
-    return total_acumulado
+    return total_acumulado#Aqui termina el acumulado de un cliente 
 
 '''
 Aumenta el limite de memoria del sistema con sys.setrecursionlimit(2500) para soportar listas largas. Luego, abre cada factura del diccionario y detona la busqueda recursiva que programamos en estructuras.py. 
 '''
 
-def buscar_producto_en_subconjunto(facturas_db, stock_code):
+def buscar_producto_en_subconjunto(facturas_db, stock_code):#Recorre el subconjunto de facturas 
     lineas_encontradas = []
     sys.setrecursionlimit(2500) # Prevención de límite de recursión
     

@@ -21,13 +21,13 @@ def medir_tiempos(tamanos):
         nuevo_dato = {"Quantity": 1, "UnitPrice": 10.0}
         
         # 2. Medir Inserción en el medio
-        inicio = time.perf_counter()
+        inicio = time.perf_counter()#Comparacion de insercion 
         lista_enlazada.insertar(pos_medio, nuevo_dato)
         t_enlazada_ins = time.perf_counter() - inicio
         
         inicio = time.perf_counter()
         lista_nativa.insert(pos_medio, nuevo_dato)
-        t_nativa_ins = time.perf_counter() - inicio
+        t_nativa_ins = time.perf_counter() - inicio#Hasta aqui es la comparacion de insercion 
         
         # 3. Medir Eliminación en el medio
         inicio = time.perf_counter()
@@ -39,7 +39,7 @@ def medir_tiempos(tamanos):
         t_nativa_elim = time.perf_counter() - inicio
         
         # 4. Medir Recorrido (Suma total)
-        inicio = time.perf_counter()
+        inicio = time.perf_counter()#Comparacion de recorrdio 
         total = 0
         for linea in lista_enlazada.recorrer():
             total += linea["Quantity"] * linea["UnitPrice"]
@@ -51,7 +51,7 @@ def medir_tiempos(tamanos):
         
         inicio = time.perf_counter()
         total = np.sum(array_numpy)
-        t_numpy_rec = time.perf_counter() - inicio
+        t_numpy_rec = time.perf_counter() - inicio#Aqui termina la comparacion de recorrido 
         
         print("Inserción (medio): Enlazada {:.6f}s | Nativa {:.6f}s".format(t_enlazada_ins, t_nativa_ins))
         print("Eliminación (medio): Enlazada {:.6f}s | Nativa {:.6f}s".format(t_enlazada_elim, t_nativa_elim))

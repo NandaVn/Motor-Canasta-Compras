@@ -18,7 +18,7 @@ class ListaEnlazada:
     def contar(self):
         return self.tamano
 
-    def insertar(self, posicion, datos):
+    def insertar(self, posicion, datos):# Insertar correcciones en cualquier pocision 
         if posicion < 0 or posicion > self.tamano:
             raise IndexError("Posición de inserción fuera de rango.")
         
@@ -34,9 +34,9 @@ class ListaEnlazada:
             nuevo_nodo.siguiente = actual.siguiente
             actual.siguiente = nuevo_nodo
             
-        self.tamano += 1
+        self.tamano += 1 #Aqui se acaba para insertar correcciones en cualquier pocision
 
-    def eliminar(self, posicion):
+    def eliminar(self, posicion):#Eliminar lineas canceladas en cualquier pocision 
         if posicion < 0 or posicion >= self.tamano:
             raise IndexError("Posición de eliminación fuera de rango.")
         
@@ -52,15 +52,15 @@ class ListaEnlazada:
             actual.siguiente = nodo_a_eliminar.siguiente
             
         self.tamano -= 1
-        return datos_eliminados
+        return datos_eliminados# Aqui termina el eliminbnar lineas canceladas en cualquier pocision     
 
-    def recorrer(self):
+    def recorrer(self):# Recuperar las lineas de cualquier factura en el orden en que fueron recuperadas
         actual = self.cabeza
         while actual is not None:
             yield actual.datos
-            actual = actual.siguiente
+            actual = actual.siguiente# Aqui termina el recuperar las lineas 
 
-    def buscar_producto_recursivo(self, nodo_actual, stock_code, resultados=None):
+    def buscar_producto_recursivo(self, nodo_actual, stock_code, resultados=None):# #Realiza la busqueda real nodo por nodo de manera recursiva
         """Busca líneas de un producto de forma recursiva (Problema 3)."""
         if resultados is None:
             resultados = []
